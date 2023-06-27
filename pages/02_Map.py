@@ -8,7 +8,7 @@ from numpy import sin, cos, arccos, pi, round
 common.page_config()
 
 st.title("Dot Map Visualization")
-
+st.divider()
 data = common.get_sales()
 
 def rad2deg(radians):
