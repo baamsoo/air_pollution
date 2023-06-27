@@ -12,12 +12,11 @@ import common
 
 
 
-
 # 전체 데이터 읽어들이기
 common.page_config()
-p = st.selectbox("**Place**", ["Dongjak", "Gwangjin"])
+p = st.selectbox("**Place**", ["Dongjak", "Gwangjin", "Jongno", "Gangnam"])
 
-st.title("2017-03-03 Dongjak-gu Pollution Level")
+st.title(f"2017-03-03 {p} Pollution Level")
 
 df = common.get_sales()
 df['Measurement date'] = df['Measurement date'].astype('str')
@@ -36,6 +35,10 @@ if p == "Dongjak":
     condition = (df_birth.Address == '6, Sadang-ro 16a-gil, Dongjak-gu, Seoul, Republic of Korea')
 elif p == "Gwangjin":
     condition = (df_birth.Address == '571, Gwangnaru-ro, Gwangjin-gu, Seoul, Republic of Korea')
+elif p == "Jongno":
+    condition = (df_birth.Address == '19, Jong-ro 35ga-gil, Jongno-gu, Seoul, Republic of Korea')
+elif p == "Gangnam":
+    condition = (df_birth.Address == '426, Hakdong-ro, Gangnam-gu, Seoul, Republic of Korea')
 
 df_add = df_birth[condition]
 
