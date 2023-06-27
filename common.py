@@ -6,8 +6,7 @@ import pandas as pd
 @st.cache_data
 
 def get_sales():
-    data = pd.read_csv("https://github.com/baamsoo/air_pollution/blob/17998c4f89482385d617500c846eae49298ab3e8/Measurement_summary.csv")
-    data.dropna(inplace=True)
+    data = pd.read_csv("https://github.com/baamsoo/air_pollution/blob/17998c4f89482385d617500c846eae49298ab3e8/Measurement_summary.csv")\
     return data
 
 def page_config():
