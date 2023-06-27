@@ -37,7 +37,6 @@ if p == "Dongjak":
 elif p == "Gwangjin":
     condition = (df_birth.Address == '571, Gwangnaru-ro, Gwangjin-gu, Seoul, Republic of Korea')
 
-condition = (df_birth.Address == address_fixed)
 df_add = df_birth[condition]
 
 df_add = df_add.loc[:,['SO2','NO2','O3','CO','PM10','PM2.5','time']]
