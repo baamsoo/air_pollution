@@ -4,7 +4,7 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-​
+
 common.page_config()
 ​
 st.title("Time-Pollution Material Concentration Plot")
