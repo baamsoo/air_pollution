@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 common.page_config()
-st.divider()
 
 st.title("Time-Pollution Material Correlation Coeff. and Heatmap")
+st.divider()
 
 df = common.get_sales()
 df['Measurement date'] = pd.to_datetime(df['Measurement date'])  # 문자열을 날짜/시간 형식으로 변환
