@@ -1,0 +1,6 @@
+streamlit-folium
+folium
+seaborn
+plotly
+scipy
+pandas
