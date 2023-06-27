@@ -11,8 +11,11 @@ import folium
 import common
 
 
+
+
 # 전체 데이터 읽어들이기
 common.page_config()
+p = st.selectbox("**Place**", ["Dongjak", "Gwangjin"])
 
 st.title("2017-03-03 Dongjak-gu Pollution Level")
 
@@ -27,7 +30,12 @@ df = df.drop(['Measurement date'],axis = 1)
 condition = (df['date'] == '2017-03-03')
 df_birth = df[condition]
 
-address_fixed = df["Address"].unique()[-6]
+address_fixed = df["Address"].unique()
+
+if p == "Dongjak":
+    condition = (df_birth.Address == '6, Sadang-ro 16a-gil, Dongjak-gu, Seoul, Republic of Korea')
+elif p == "Gwangjin":
+    condition = (df_birth.Address == '571, Gwangnaru-ro, Gwangjin-gu, Seoul, Republic of Korea')
 
 condition = (df_birth.Address == address_fixed)
 df_add = df_birth[condition]
