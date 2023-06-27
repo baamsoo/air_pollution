@@ -8,6 +8,7 @@ import pandas as pd
 
 common.page_config()
 st.title("Average PM10 for all districts (2017-2019) Visualization")
+st.divider()
 
 lineplot_df = common.get_sales()
 lineplot_df['Measurement date'] = pd.to_datetime(lineplot_df['Measurement date'])
