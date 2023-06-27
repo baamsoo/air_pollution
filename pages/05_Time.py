@@ -6,16 +6,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 common.page_config()
-​
+
 st.title("Time-Pollution Material Concentration Plot")
-​
+
 df = common.get_sales()
 df['Measurement date'] = pd.to_datetime(df['Measurement date'])
 df['hour'] = df.loc[:, "Measurement date"].dt.hour
-​
+
 data = df.groupby('hour', as_index=False).agg({'SO2':'mean', 'NO2':'mean', 'O3':'mean', 'CO':'mean', 'PM10':'mean', 'PM2.5':'mean'})
-​
 tab1, tab2 = st.tabs(["Pyplot", "Plotly"])
+
 with tab1:
     fig, (ax1, ax2) = plt.subplots(figsize = (15, 15), nrows=2, ncols=1)
     fig.suptitle('Time-Pollution Material Concentration Plot', fontsize=30)
