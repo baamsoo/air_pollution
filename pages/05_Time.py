@@ -9,7 +9,7 @@ common.page_config()
 ​
 st.title("Time-Pollution Material Concentration Plot")
 ​
-df = common.get_data()
+df = common.get_sales()
 df['Measurement date'] = pd.to_datetime(df['Measurement date'])
 df['hour'] = df.loc[:, "Measurement date"].dt.hour
 ​
