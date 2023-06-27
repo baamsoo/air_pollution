@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 common.page_config()
+st.divider()
 
 st.title("Time-Pollution Material Correlation Coeff. and Heatmap")
 
