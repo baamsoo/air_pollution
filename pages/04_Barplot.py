@@ -9,20 +9,7 @@ import common
 common.page_config()
 
 st.title("SO2 barplot")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
-st.write("  ")
+st.divider()
 df = common.get_sales()
 
 # SO2 비율이 높은 정보 10개 출력
