@@ -36,24 +36,29 @@ def color_select(x):
         return 'yellow'
     else:
         return 'blue'
-      
-seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
-location = data.groupby('Station code')['PM2.5'].agg([np.mean])
-location['Latitude'] = data['Latitude'].unique()
-location['Longitude'] = data['Longitude'].unique()
+@st.cache(experimental_allow_widgets=True)
+def draw_folium():      
+    seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
-markers = 999
-loc_h = 0
-loc_v = 0
+    location = data.groupby('Station code')['PM2.5'].agg([np.mean])
+    location['Latitude'] = data['Latitude'].unique()
+    location['Longitude'] = data['Longitude'].unique()
 
-for i in range(len(location)):
-    folium.Circle(location=[location.iloc[i,1], location.iloc[i,2]], radius = location.iloc[i, 0]* 30, color=color_select(location.iloc[i,0]),fill_color='#ffffgg').add_to(seoul)
-    if getDistanceBetweenPointsNew(37.4971850, 126.927595, location.iloc[i,1], location.iloc[i,2]) < markers :
-        markers = getDistanceBetweenPointsNew(37.4971850, 126.927595, location.iloc[i,1], location.iloc[i,2])
-        loc_h, loc_v = location.iloc[i,1], location.iloc[i,2]
-        
-folium.Marker([37.4971850, 126.927595], icon=folium.Icon(popup='Dongjak-gu', color='red', icon='glyphicon glyphicon-home')).add_to(seoul)
-folium.Marker([loc_h, loc_v], icon=folium.Icon(popup='test', color='blue', icon='glyphicon glyphicon-home')).add_to(seoul)
+    markers = 999
+    loc_h = 0
+    loc_v = 0
 
-st_folium(seoul, 1000)
+    for i in range(len(location)):
+        folium.Circle(location=[location.iloc[i,1], location.iloc[i,2]], radius = location.iloc[i, 0]* 30, color=color_select(location.iloc[i,0]),fill_color='#ffffgg').add_to(seoul)
+        if getDistanceBetweenPointsNew(37.4971850, 126.927595, location.iloc[i,1], location.iloc[i,2]) < markers :
+            markers = getDistanceBetweenPointsNew(37.4971850, 126.927595, location.iloc[i,1], location.iloc[i,2])
+            loc_h, loc_v = location.iloc[i,1], location.iloc[i,2]
+            
+    folium.Marker([37.4971850, 126.927595], icon=folium.Icon(popup='Dongjak-gu', color='red', icon='glyphicon glyphicon-home')).add_to(seoul)
+    folium.Marker([loc_h, loc_v], icon=folium.Icon(popup='test', color='blue', icon='glyphicon glyphicon-home')).add_to(seoul)
+
+    st_folium(seoul, 1000)
+
+if __name__ == "__main__":
+    draw_folium()
