@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 common.page_config()
 
 st.title("Time-Pollution Material Concentration Plot")
+st.divider()
 
 df = common.get_sales()
 df['Measurement date'] = pd.to_datetime(df['Measurement date'])
