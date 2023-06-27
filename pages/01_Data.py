@@ -1,6 +1,5 @@
 # Data.py (데이터 불러온 곳)
 import streamlit as st
-import pandas as pd
 import common
 
 common.page_config()
