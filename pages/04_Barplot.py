@@ -8,9 +8,11 @@ import common
 
 common.page_config()
 
+st.title("SO2 barplot")
+
 df = common.get_sales()
 
-'''SO2 비율이 높은 정보 10개 출력'''
+# SO2 비율이 높은 정보 10개 출력
 SO2 = df.sort_values(by = ['SO2'], ascending=False)
 
 SO2_Address = df.groupby('Address').agg({'SO2' : 'median'}).sort_values('SO2',ascending=False).reset_index()
