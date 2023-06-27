@@ -11,6 +11,6 @@ def get_sales():
 
 def page_config():
     st.set_page_config(
-        page_title="test",
+        page_title="Air-Pollution",
         page_icon="🌊",
     )
