@@ -18,7 +18,7 @@ df_0 = df_summary.groupby(['date'], as_index=False).agg({'SO2':'mean', 'NO2':'me
 variables = [('NO2', 'PM10'), ('NO2', 'PM2.5'), ('CO', 'PM10'), ('CO', 'PM2.5'),
              ('SO2', 'PM10'), ('SO2', 'PM2.5'), ('O3', 'PM10'), ('O3', 'PM2.5')]
 
-tab1, tab2 = st.tabs(["그 뭐냐", "그 뭐더라"])
+tab1, tab2 = st.tabs(["미세먼지 상관관계", "오존 상관관계"])
 
 with tab1:  
   fig, ax = plt.subplots(4, 2, figsize=(10, 15))
