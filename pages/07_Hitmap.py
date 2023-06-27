@@ -10,7 +10,7 @@ common.page_config()
 ​
 st.title("Time-Pollution Material Correlation Coeff. and Heatmap")
 ​
-df = common.get_data()
+df = common.get_sales()
 df['Measurement date'] = pd.to_datetime(df['Measurement date'])  # 문자열을 날짜/시간 형식으로 변환
 df['date'] = df.loc[:, "Measurement date"].dt.date  # 날짜 컬럼 생성
 df = df.drop(['Measurement date'], axis=1)
