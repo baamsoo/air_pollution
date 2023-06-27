@@ -37,7 +37,7 @@ def color_select(x):
     else:
         return 'blue'
 
-@st.cache(experimental_allow_widgets=True)
+@st.cache_data(experimental_allow_widgets=True)
 def draw_folium():      
     seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
