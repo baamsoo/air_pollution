@@ -12,6 +12,7 @@ st.title("SO2 barplot")
 st.divider()
 df = common.get_sales()
 
+
 # SO2 비율이 높은 정보 10개 출력
 SO2 = df.sort_values(by = ['SO2'], ascending=False)
 
@@ -23,10 +24,11 @@ SO2_Address = df.groupby('Address').agg({'SO2' : 'median'}).sort_values('SO2',as
 SO2 = SO2_Address.sort_values('SO2',ascending=False).head(10)
 
 
-plt.figure(figsize=(12,35))
+fig, ax = plt.subplots(figsize=(12,10))
 
-plt.subplot(6,1,1)
-sns.barplot(y="Address", x="SO2", data = SO2_Address.head(10))
+sns.barplot(y="Address", x="SO2", data = SO2_Address.head(10), ax=ax)
+plt.title('SO2 by Address Top 10')
 
 # st_folium()
-st.pyplot(plt)
+plt.subplots_adjust(top=0.95)
+st.write(fig)
