@@ -61,35 +61,39 @@ PM2_5 = PM2_5_Address.sort_values('PM2.5',ascending=False).head(10)
 # 탭 생성 : 첫번째 탭의 이름은 Tab A 로, Tab B로 표시합니다. 
 tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(['SO2', 'NO2 ', 'O3', 'CO ', 'PM10 ', 'PM2.5'])
 
-plt.figure(figsize=(12,10))
-
 with tab1:
   st.write('SO2 비율이 높은 정보 10개 출력')
+  plt.figure(figsize=(12,10))
   plt.subplot(6,1,1)
   sns.barplot(y="Address", x="SO2", data = SO2_Address.head(10))
   st.pyplot(plt)
 with tab2:
   st.write('NO2 비율이 높은 정보 10개 출력')
+  plt.figure(figsize=(12,10))
   plt.subplot(6,1,1)
   sns.barplot(y="Address", x="NO2", data = NO2_Address.head(10))
   st.pyplot(plt)
 with tab3:
   st.write('O3 비율이 높은 정보 10개 출력')
+  plt.figure(figsize=(12,10))
   plt.subplot(6,1,1)
   sns.barplot(y="Address", x="O3", data = O3_Address.head(10))
   st.pyplot(plt)
 with tab4:
   st.write('CO 비율이 높은 정보 10개 출력')
+  plt.figure(figsize=(12,10))
   plt.subplot(6,1,1)
   sns.barplot(y="Address", x="CO", data = CO_Address.head(10))
   st.pyplot(plt)
 with tab5:
   st.write('PM10 비율이 높은 정보 10개 출력')
+  plt.figure(figsize=(12,10))
   plt.subplot(6,1,1)
   sns.barplot(y="Address", x="PM10", data = PM10_Address.head(10))
   st.pyplot(plt)
 with tab6:
   st.write('PM2.5 비율이 높은 정보 10개 출력')
+  plt.figure(figsize=(12,10))
   plt.subplot(6,1,1)
   sns.barplot(y="Address", x="PM2.5", data = PM2_5_Address.head(10))
   st.pyplot(plt)
