@@ -37,8 +37,7 @@ with tab1:
       equation = f'R-squared: {r_value**2:.2f}'
       ax[row, col].text(0.05, 0.95, equation, transform=ax[row, col].transAxes, fontsize=12, verticalalignment='top', color='green')
       fig.tight_layout()
-  with st.echo():
-    st.pyplot(fig)
+  st.pyplot(fig)
 
 
 with tab2:
@@ -50,5 +49,4 @@ with tab2:
       slope, intercept, r_value, p_value, std_err = linregress(df_0[x_var], df_0[y_var])
       equation = f'R-squared: {r_value**2:.2f}'
       ax[i].text(0.05, 0.95, equation, transform=ax[i].transAxes, fontsize=12, verticalalignment='top', color='green')
-  with st.echo():
-    st.pyplot(fig)
+  st.pyplot(fig)
