@@ -64,7 +64,6 @@ tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(['SO2', 'NO2 ', 'O3', 'CO ', 'PM10 '
 with tab1:
   st.write('SO2 비율이 높은 정보 10개 출력')
   plt.figure(figsize=(12,40))
-  plt.subplot(6,1,1)
   sns.barplot(y="Address", x="SO2", data = SO2_Address.head(10))
   st.pyplot(plt)
 with tab2:
