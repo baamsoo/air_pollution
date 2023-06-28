@@ -35,7 +35,7 @@ with tab1:
 
 
 with tab2:
-  fig, ax = plt.subplots(1, 3, figsize=(20,5))
+  fig, ax = plt.subplots(3, 1, figsize=(5,10))
   
   variables = [('O3', 'SO2'), ('O3', 'NO2'), ('O3', 'CO')]
   for i, (x_var, y_var) in enumerate(variables):
