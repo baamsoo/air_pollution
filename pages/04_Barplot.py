@@ -7,6 +7,9 @@ import streamlit as st
 import common
 
 common.page_config()
+st.title("___Top 10 pollutants by region___")
+st.divider()
+df = common.get_sales()
 
 # SO2 barplot
 SO2 = df.sort_values(by = ['SO2'], ascending=False)
@@ -55,9 +58,6 @@ PM2_5_Address = df.groupby('Address').agg({'PM2.5' : 'median'}).sort_values('PM2
 # reset_index -> 인덱스 리셋(단순한 정수 인덱스로 세팅)
 # 상위 10개 데이터만 저장
 PM2_5 = PM2_5_Address.sort_values('PM2.5',ascending=False).head(10)
-
-# 데이터 기반으로 Barplot 출력 
-st.title("___Top 10 pollutants by region___")
 
 # 탭 생성 : 첫번째 탭의 이름은 Tab A 로, Tab B로 표시합니다. 
 tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(['SO2', 'NO2 ', 'O3', 'CO ', 'PM10 ', 'PM2.5'])
