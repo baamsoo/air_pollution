@@ -7,8 +7,7 @@ import streamlit as st
 import common
 
 common.page_config()
-st.title("___Top 10 pollutants by region___")
-st.divider()
+st.title("Top 10 pollutants by region")
 df = common.get_sales()
 
 # SO2 barplot
