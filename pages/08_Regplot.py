@@ -5,6 +5,8 @@ import seaborn as sns
 from scipy.stats import linregress
 
 common.page_config()
+# st.set_page_config(layout="wide")
+
 st.title("Regplot Visualization")
 
 df_summary = common.get_sales()
@@ -18,10 +20,13 @@ df_0 = df_summary.groupby(['date'], as_index=False).agg({'SO2':'mean', 'NO2':'me
 variables = [('NO2', 'PM10'), ('NO2', 'PM2.5'), ('CO', 'PM10'), ('CO', 'PM2.5'),
              ('SO2', 'PM10'), ('SO2', 'PM2.5'), ('O3', 'PM10'), ('O3', 'PM2.5')]
 
+width = st.sidebar.slider("plot width", 0.1, 25., 10.)
+height = st.sidebar.slider("plot height", 0.1, 25., 12.)
+
 tab1, tab2 = st.tabs(["미세먼지 상관관계", "오존 상관관계"])
 
 with tab1:  
-  fig, ax = plt.subplots(4, 2, figsize=(10, 15))
+  fig, ax = plt.subplots(4, 2, figsize=(width, height))
   
   for i, (x_var, y_var) in enumerate(variables):
       row = i // 2
@@ -31,11 +36,13 @@ with tab1:
       slope, intercept, r_value, p_value, std_err = linregress(df_0[x_var], df_0[y_var])
       equation = f'R-squared: {r_value**2:.2f}'
       ax[row, col].text(0.05, 0.95, equation, transform=ax[row, col].transAxes, fontsize=12, verticalalignment='top', color='green')
-  st.pyplot(fig)
+      fig.tight_layout()
+  with st.echo():
+    st.pyplot(fig)
 
 
 with tab2:
-  fig, ax = plt.subplots(3, 1, figsize=(5,6))
+  fig, ax = plt.subplots(3, 1, figsize=(width, height))
   
   variables = [('O3', 'SO2'), ('O3', 'NO2'), ('O3', 'CO')]
   for i, (x_var, y_var) in enumerate(variables):
@@ -43,4 +50,5 @@ with tab2:
       slope, intercept, r_value, p_value, std_err = linregress(df_0[x_var], df_0[y_var])
       equation = f'R-squared: {r_value**2:.2f}'
       ax[i].text(0.05, 0.95, equation, transform=ax[i].transAxes, fontsize=12, verticalalignment='top', color='green')
-  st.pyplot(fig)
+  with st.echo():
+    st.pyplot(fig)
